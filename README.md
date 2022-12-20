@@ -53,7 +53,7 @@ class Send:
 # !NOTICE FOR GMAIL OR GOOGLE USERS!
 **For gmail users who are sending the Emails using Google Email Services like Gmail must setup a Less Secure App.**
 **To set this up review the video here -> https://youtu.be/pAPWBHxnFHM <- Once you do this replace the 2 Lines below.**
-![alt text](https://github.com/Zurek0x/zeno_Hijacker/blob/main/media/Screenshot_1.png?raw=true)
+![alt text](https://github.com/Zurek0x/zeno_keylogger/blob/main/media/mok.png?raw=true)
 
 # Starting up with windows and extra stuff
 To use these features you must import the code into zeno_Embedder which is a tool to do exactly this -> https://github.com/Zurek0x/zeno_Embedder
